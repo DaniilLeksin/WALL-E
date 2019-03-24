@@ -26,7 +26,7 @@ describe Walle do
     end
 
     it 'reports' do
-      expect(subject.report(nil)).to eq('Hey Eva, Im not placed :(')
+      expect(subject.report(nil)).to eq('Hey Eve, Im not placed :(')
       subject.place(x_pos: 0, y_pos: 0, direction: :NORTH)
       expect(subject.report(nil)).to eq('0,0,NORTH')
     end
@@ -62,22 +62,22 @@ describe Walle do
   describe 'go into an abyss' do
     it 'barrier away from the north' do
       subject.place(x_pos: 0, y_pos: 4, direction: :NORTH)
-      expect(subject.move(nil)).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).to eq('Eve! Oh no! Its a trap! Im out ... of the map')
     end
 
     it 'barrier away from the west' do
       subject.place(x_pos: 0, y_pos: 0, direction: :WEST)
-      expect(subject.move(nil)).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).to eq('Eve! Oh no! Its a trap! Im out ... of the map')
     end
 
     it 'barrier away from the east' do
       subject.place(x_pos: 4, y_pos: 0, direction: :EAST)
-      expect(subject.move(nil)).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).to eq('Eve! Oh no! Its a trap! Im out ... of the map')
     end
 
     it 'barrier away from the south' do
       subject.place(x_pos: 0, y_pos: 0, direction: :SOUTH)
-      expect(subject.move(nil)).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).to eq('Eve! Oh no! Its a trap! Im out ... of the map')
     end
   end
 
@@ -107,38 +107,38 @@ describe Walle do
   describe 'go walle super specials' do
     it 'north/west corner' do
       subject.place(x_pos: 0, y_pos: 4, direction: :NORTH)
-      expect(subject.move(nil)).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).to eq('Eve! Oh no! Its a trap! Im out ... of the map')
       subject.left(nil)
-      expect(subject.move(nil)).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).to eq('Eve! Oh no! Its a trap! Im out ... of the map')
       subject.left(nil)
-      expect(subject.move(nil)).not_to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).not_to eq('Eve! Oh no! Its a trap! Im out ... of the map')
     end
 
     it 'north/east corner' do
       subject.place(x_pos: 4, y_pos: 4, direction: :NORTH)
-      expect(subject.move(nil)).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).to eq('Eve! Oh no! Its a trap! Im out ... of the map')
       subject.right(nil)
-      expect(subject.move(nil)).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).to eq('Eve! Oh no! Its a trap! Im out ... of the map')
       subject.right(nil)
-      expect(subject.move(nil)).not_to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).not_to eq('Eve! Oh no! Its a trap! Im out ... of the map')
     end
 
     it 'south/west corner' do
       subject.place(x_pos: 0, y_pos: 0, direction: :SOUTH)
-      expect(subject.move(nil)).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).to eq('Eve! Oh no! Its a trap! Im out ... of the map')
       subject.right(nil)
-      expect(subject.move(nil)).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).to eq('Eve! Oh no! Its a trap! Im out ... of the map')
       subject.right(nil)
-      expect(subject.move(nil)).not_to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).not_to eq('Eve! Oh no! Its a trap! Im out ... of the map')
     end
 
     it 'south/east corner' do
       subject.place(x_pos: 4, y_pos: 0, direction: :SOUTH)
-      expect(subject.move(nil)).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).to eq('Eve! Oh no! Its a trap! Im out ... of the map')
       subject.left(nil)
-      expect(subject.move(nil)).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).to eq('Eve! Oh no! Its a trap! Im out ... of the map')
       subject.left(nil)
-      expect(subject.move(nil)).not_to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      expect(subject.move(nil)).not_to eq('Eve! Oh no! Its a trap! Im out ... of the map')
     end
   end
 end

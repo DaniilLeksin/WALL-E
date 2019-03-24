@@ -2,13 +2,13 @@
 
 require 'spec_helper'
 
-describe Eva do
+describe Eve do
   let!(:table) { Table.new(5, 5) }
   let!(:walle) { Walle.new(table: table) }
-  let!(:subject) { Eva.new(walle) }
+  let!(:subject) { Eve.new(walle) }
 
   describe '#create' do
-    it { expect(subject).to be_kind_of(Eva) }
+    it { expect(subject).to be_kind_of(Eve) }
   end
 
   describe '#commands' do

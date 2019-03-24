@@ -9,16 +9,16 @@ class Simulator < Thor
   method_option :y_axis,  type: :numeric, default: 5, aliases: "-y", desc: 'Width of table'
 
   def manual_control
-    say "[WALL-E]::.. HELL0 EVA. I'm WALL-E a little R0B0T. Stands ready to follow up your C0MMANDS", :MAGENTA
+    say "[WALL-E]::.. HELL0 EVE. I'm WALL-E a little R0B0T. Stands ready to follow up your C0MMANDS", :MAGENTA
     table = Table.new(options[:x_axis], options[:y_axis])
     walle = Walle.new({table: table})
-    eva = Eva.new(walle)
+    eve = Eve.new(walle)
     
     loop do
-      say '[EVA]::.. Input command (Q to quit): ', :CYAN
+      say '[EVE]::.. Input command (Q to quit): ', :CYAN
       input = STDIN.gets
       break if input =~ /q/i
-      say "[WALL-E]::.. #{eva.give_order(input)}", :YELLOW
+      say "[WALL-E]::.. #{eve.give_order(input)}", :YELLOW
     end
   end
 
@@ -27,16 +27,16 @@ class Simulator < Thor
   method_option :y_axis,  type: :numeric, default: 5, aliases: '-y'
 
   def load_cassette(filename)
-    say "[EVA]::.. Load cassette #{filename} please\n", :CYAN
+    say "[EVE]::.. Load cassette #{filename} please\n", :CYAN
     return say "[WALL-E]::.. I can't find #{filename}", :MAGENTA unless File.exists?(filename)
     task_list = load_tasks(filename)
 
     table = Table.new(options[:x_axis], options[:y_axis])
     walle = Walle.new({table: table})
-    eva = Eva.new(walle)
+    eve = Eve.new(walle)
     
     
-    task_list.each_line { |task| eva.give_order(task)}
+    task_list.each_line { |task| eve.give_order(task)}
     say "[WALL-E]::.. #{walle.report(nil)}", :MAGENTA
   end
 

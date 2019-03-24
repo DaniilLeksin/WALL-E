@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Eva
+class Eve
   def initialize(walle)
     @walle = walle
   end
