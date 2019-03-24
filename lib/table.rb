@@ -1,6 +1,6 @@
-# class `Table`
-class Table
+# frozen_string_literal: true
 
+class Table
   attr_reader :x_axis, :y_axis
 
   def initialize(x_axis, y_axis)

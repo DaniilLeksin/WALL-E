@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Answers
-  NOT_PLACED = 'Hey Eva, I''m not placed :('.freeze
-  INVALID_INPUT = 'I don''t understand you Eva'.freeze
-  INVALID_DIRECTION = 'Sorry Eva, I don''t know where to go'.freeze
-  INVALID_POSITION = 'Eva! Oh no! It''s a trap! I''m out ... of the map'.freeze
-  GOOD_JOB = 'Thank you Eva, I''m in'.freeze
-  IDN = 'Something goes wrong, I Don''t know :('.freeze
+  NOT_PLACED = 'Hey Eva, Im not placed :('
+  INVALID_INPUT = 'I dont understand you Eva'
+  INVALID_DIRECTION = 'Sorry Eva, I dont know where to go'
+  INVALID_POSITION = 'Eva! Oh no! Its a trap! Im out ... of the map'
+  GOOD_JOB = 'Thank you Eva, Im in'
+  IDN = 'Something goes wrong, I Dont know :('
 end

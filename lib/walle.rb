@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Walle
   attr_accessor :table, :x_pos, :y_pos, :direction, :index
 
@@ -13,24 +15,23 @@ class Walle
     Command.new(self).place(opts)
   end
 
-  def report(opts)
+  def report(_opts)
     Command.new(self).report
   end
 
-  def left(opts)
+  def left(_opts)
     Command.new(self).left
   end
 
-  def right(opts)
+  def right(_opts)
     Command.new(self).right
   end
 
-  def move(opts)
+  def move(_opts)
     Command.new(self).move
   end
 
   def placed?
     [x_pos, y_pos, direction, index].none?(&:nil?)
   end
-
 end

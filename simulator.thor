@@ -15,10 +15,10 @@ class Simulator < Thor
     eva = Eva.new(walle)
     
     loop do
-      say '[WALL-E]::.. Input command (Q to quit): ', :MAGENTA
+      say '[EVA]::.. Input command (Q to quit): ', :CYAN
       input = STDIN.gets
       break if input =~ /q/i
-      say eva.give_order(input)
+      say "[WALL-E]::.. #{eva.give_order(input)}", :YELLOW
     end
   end
 
