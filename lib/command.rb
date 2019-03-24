@@ -8,14 +8,11 @@ class Command
   end
 
   def place(opts)
-    values = opts.values.join(',')
-    return Answers::INVALID_INPUT if values&.split(',')&.count != 3 # oh! magic numbers
-
     x_pos = opts[:x_pos].to_i
     y_pos = opts[:y_pos].to_i
     direction = opts[:direction].upcase
     
-    return Answers::INVALID_DIRECTION if Map.in_map?(direction)
+    return Answers::INVALID_DIRECTION unless Map.in_map?(direction)
     
     return Answers::INVALID_POSITION if Map.out_of_map?(@walle.table, x_pos) || Map.out_of_map?(@walle.table, y_pos)
     

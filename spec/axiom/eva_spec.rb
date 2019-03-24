@@ -14,9 +14,14 @@ describe Eva do
       expect(subject.give_order(nil)).to be_nil
     end
     
-    it 'returns error message if cmmand not found' do
+    it 'returns error message if command not found' do
       msg = Answers::INVALID_INPUT
       expect(subject.give_order('fake_comand')).to eq(msg)
+    end
+
+    it 'returns error message if command is crazy' do
+      msg = Answers::INVALID_INPUT
+      expect(subject.give_order('place 0,0,0')).to eq(msg)
     end
     
     it 'returns error message when exception' do

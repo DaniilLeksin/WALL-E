@@ -10,9 +10,14 @@ class Eva
     return Answers::INVALID_INPUT unless %w[left right move place report].include?(command)
     opts = {}
     if args
-      opts[:x_pos] = args.split(',')[0]
-      opts[:y_pos] = args.split(',')[1]
-      opts[:direction] = args.split(',')[2]
+      return Answers::INVALID_INPUT if args&.split(',')&.count != 3 # oh! magic numbers
+      
+      x_pos, y_pos, direction = args.split(',').map(&:strip)
+      opts[:x_pos] = x_pos.to_i
+      opts[:y_pos] = y_pos.to_i
+      return Answers::INVALID_INPUT unless %w[north south west east].include?(direction.downcase)
+      opts[:direction] = direction.upcase.to_sym
+      
     end
     @walle.send(command.to_sym, opts)
   rescue

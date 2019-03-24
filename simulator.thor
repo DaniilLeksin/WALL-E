@@ -27,15 +27,17 @@ class Simulator < Thor
   method_option :y_axis,  type: :numeric, default: 5, aliases: '-y'
 
   def load_cassette(filename)
+    say "[EVA]::.. Load cassette #{filename} please\n", :CYAN
+    return say "[WALL-E]::.. I can't find #{filename}", :MAGENTA unless File.exists?(filename)
     task_list = load_tasks(filename)
 
     table = Table.new(options[:x_axis], options[:y_axis])
     walle = Walle.new({table: table})
     eva = Eva.new(walle)
-
-    say "cassette: #{filename}"
+    
+    
     task_list.each_line { |task| eva.give_order(task)}
-    say "output: #{walle.report(nil)}"
+    say "[WALL-E]::.. #{walle.report(nil)}", :MAGENTA
   end
 
   no_commands do
