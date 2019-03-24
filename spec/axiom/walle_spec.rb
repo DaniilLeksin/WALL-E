@@ -56,6 +56,28 @@ describe Walle do
       expect(subject.direction).to eq(:NORTH)
     end
   end
+  
+  describe 'go into an abyss' do
+    it 'barrier away from the north' do
+      subject.place(opts={x_pos: 0, y_pos: 4, direction: 'NORTH'})
+      expect(subject.move).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+    end
+
+    it 'barrier away from the west' do
+      subject.place(opts={x_pos: 0, y_pos: 0, direction: 'WEST'})
+      expect(subject.move).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+    end
+
+    it 'barrier away from the east' do
+      subject.place(opts={x_pos: 4, y_pos: 0, direction: 'EAST'})
+      expect(subject.move).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+    end
+
+    it 'barrier away from the south' do
+      subject.place(opts={x_pos: 0, y_pos: 0, direction: 'SOUTH'})
+      expect(subject.move).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+    end
+  end
 
   describe '#go walle specials' do
     it '#Example a' do
@@ -78,5 +100,44 @@ describe Walle do
       subject.move
       expect(subject.report).to eq('3,3,NORTH')
     end
+  end
+  
+  describe 'go walle super specials' do
+    it 'north/west corner' do
+      subject.place(opts={x_pos: 0, y_pos: 4, direction: 'NORTH'})
+      expect(subject.move).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      subject.left
+      expect(subject.move).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      subject.left
+      expect(subject.move).not_to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+    end
+
+    it 'north/east corner' do
+      subject.place(opts={x_pos: 4, y_pos: 4, direction: 'NORTH'})
+      expect(subject.move).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      subject.right
+      expect(subject.move).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      subject.right
+      expect(subject.move).not_to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+    end
+
+    it 'south/west corner' do
+      subject.place(opts={x_pos: 0, y_pos: 0, direction: 'SOUTH'})
+      expect(subject.move).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      subject.right
+      expect(subject.move).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      subject.right
+      expect(subject.move).not_to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+    end
+
+    it 'south/east corner' do
+      subject.place(opts={x_pos: 4, y_pos: 0, direction: 'SOUTH'})
+      expect(subject.move).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      subject.left
+      expect(subject.move).to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+      subject.left
+      expect(subject.move).not_to eq('Eva! Oh no! Its a trap! Im out ... of the map')
+    end
+
   end
 end
