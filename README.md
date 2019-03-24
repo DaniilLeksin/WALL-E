@@ -1,5 +1,3 @@
-Tech Details [here](#tech-details)
-
 ## WALL-E
 ![wall-e](https://adoptingjames.files.wordpress.com/2012/05/wall-e1.jpg)
 >In the year 2110, rising toxicity levels make life unsustainable on Earth. After all the humans leave Earth aboard giant spaceships, millions of WALL•E robots and a lesser amount of mobile incinerators are left behind to clean up the dirty planet.
@@ -12,7 +10,7 @@ Tech Details [here](#tech-details)
 ![Eve](https://vignette.wikia.nocookie.net/pixar/images/c/ca/Eve_wall•e_clipped_rev_1.png/revision/latest?cb=20131115143452)
 >EVE is one of several robots who are sent to Earth on a scanning mission. An advanced model equipped with a quasar ion cannon and capable of flight and high speeds.
 
-#tech-details
+## Tech Details
 The Toy Robot Challenge was originally formulated by [Jon Eaves](https://twitter.com/joneaves)
 
 Thor is used:
