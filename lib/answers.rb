@@ -4,4 +4,5 @@ class Answers
   INVALID_DIRECTION = 'Sorry Eva, I don''t know where to go'.freeze
   INVALID_POSITION = 'Eva! Oh no! It''s a trap! I''m out ... of the map'.freeze
   GOOD_JOB = 'Thank you Eva, I''m in'.freeze
+  IDN = 'Something goes wrong, I Don''t know :('.freeze
 end

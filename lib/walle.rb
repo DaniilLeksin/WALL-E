@@ -13,19 +13,19 @@ class Walle
     Command.new(self).place(opts)
   end
 
-  def report
+  def report(opts)
     Command.new(self).report
   end
 
-  def left
+  def left(opts)
     Command.new(self).left
   end
 
-  def right
+  def right(opts)
     Command.new(self).right
   end
 
-  def move
+  def move(opts)
     Command.new(self).move
   end
 
