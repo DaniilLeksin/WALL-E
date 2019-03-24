@@ -20,10 +20,6 @@ module Map
     def calculate_index(index)
       index % MAP.size
     end
-
-    def calculate_index_right(index)
-      (index - 1) % MAP.size
-    end
     
     def get_direction(index)
       MAP.keys[index]
