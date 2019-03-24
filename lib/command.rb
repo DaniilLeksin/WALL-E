@@ -1,29 +1,70 @@
 # frozen_string_literal: true
 
-class Command < ClassyEnum::Base
-  COMMANDS = %w[left right move place report].freeze
-
+class Command
   attr_accessor :walle
 
-  def execute_order; end
-end
+  def initialize(walle)
+    @walle = walle
+  end
 
-class Command::Left < Command
-  def execute_order(args = nil); end
-end
+  def place(opts)
+    values = opts.values.join(',')
+    return Answers::INVALID_INPUT if values&.split(',')&.count != 3 # oh! magic numbers
 
-class Command::Right < Command
-  def execute_order(args = nil); end
-end
+    x_pos = opts[:x_pos].to_i
+    y_pos = opts[:y_pos].to_i
+    direction = opts[:direction].upcase
+    
+    return Answers::INVALID_DIRECTION if Map.in_map?(direction)
+    
+    return Answers::INVALID_POSITION if Map.out_of_map?(@walle.table, x_pos) || Map.out_of_map?(@walle.table, y_pos)
+    
+    @walle.x_pos = x_pos
+    @walle.y_pos = y_pos
+    @walle.index = Map.find_index(direction)
+    @walle.direction = direction.to_sym
+    
+    Answers::GOOD_JOB
+  end
+  
+  def report
+    return Answers::NOT_PLACED unless @walle.placed?
 
-class Command::Move < Command
-  def execute_order(args = nil); end
-end
+    "#{walle.x_pos},#{walle.y_pos},#{walle.direction}"
+  end
 
-class Command::Place < Command
-  def execute_order(args = nil); end
-end
+  def left
+    return Answers::NOT_PLACED unless @walle.placed?
 
-class Command::Report < Command
-  def execute_order(args = nil); end
+    @walle.index = Map.calculate_index(@walle.index - 1)
+    @walle.direction = Map.get_direction(@walle.index).to_sym
+
+    Answers::GOOD_JOB
+  end
+  
+  def right
+    return Answers::NOT_PLACED unless @walle.placed?
+
+    @walle.index = Map.calculate_index(@walle.index + 1)
+    @walle.direction = Map.get_direction(@walle.index)
+
+    Answers::GOOD_JOB
+  end
+  
+  def move
+    return Answers::NOT_PLACED unless @walle.placed?
+
+    signal = Map.get_signal(@walle.direction.to_sym)
+    step = 1 # Need to check if it is negative 
+    axis_value = @walle.send(signal[:axis]).send(signal[:object], step)
+
+    return Answers::INVALID_POSITION if Map.out_of_map?(@walle.table, axis_value)
+
+    # Maybe looks strange but it is the similar:
+    # @walle.y_pos = 1
+    @walle.send("#{signal[:axis]}=", axis_value)
+
+    Answers::GOOD_JOB
+  end
+
 end
